@@ -164,46 +164,194 @@ namespace NewBookStoreApplication
         [WebMethod]
         public string GetAllBooks()
         {
-            List<Book> books = new List<Book>();
-
             try
             {
                 using (SqlConnection conn = new SqlConnection(_connectionString))
                 {
-                    conn.Open();
-
-                    // Calling stored procedure
+                    // 1. Create the command for the stored procedure
                     using (SqlCommand cmd = new SqlCommand("sp_GetAllBooks", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Book book = new Book
-                                {
-                                    BookId = reader.GetInt32(reader.GetOrdinal("BookId")),
-                                    Title = reader.GetString(reader.GetOrdinal("Title")),
-                                    Author = reader.GetString(reader.GetOrdinal("Author")),
-                                    ISBN = reader.GetString(reader.GetOrdinal("ISBN")),
-                                    Price = reader.GetDecimal(reader.GetOrdinal("Price")),
-                                    PublishedDate = reader.GetDateTime(reader.GetOrdinal("PublishedDate")),
-                                    Category = reader.GetString(reader.GetOrdinal("Category")),
-                                    Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
-                                    StockQuantity = reader.GetInt32(reader.GetOrdinal("StockQuantity")),
-                                    CreatedDate = reader.GetDateTime(reader.GetOrdinal("CreatedDate")),
-                                    UpdatedDate = reader.GetDateTime(reader.GetOrdinal("UpdatedDate"))
-                                };
+                        // 2. Use SqlDataAdapter to fill the DataSet
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataSet ds = new DataSet();
 
-                                books.Add(book);
-                            }
+                        // 3. Fill the DataSet
+                        adapter.Fill(ds, "Books");
+
+                        // 4. Convert the first DataTable to JSON using Newtonsoft
+                        if (ds.Tables.Count > 0)
+                        {
+                            return JsonConvert.SerializeObject(ds.Tables["Books"]);
+                        }
+                        else
+                        {
+                            return JsonConvert.SerializeObject(new { message = "No records found" });
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new { error = ex.Message });
+            }
+        }
 
-                // Convert list to JSON using Newtonsoft.Json
-                return JsonConvert.SerializeObject(books);
+
+        [WebMethod]
+        public string GetBooksByCategoryId(string categoryId)
+        {
+            try
+            {
+                int catId = Convert.ToInt32(categoryId); // Convert string to int
+
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_GetBooksByCategory", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Pass the category ID as a parameter
+                        cmd.Parameters.AddWithValue("@categoryID", catId);
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataSet ds = new DataSet();
+
+                        adapter.Fill(ds, "Books");
+
+                        if (ds.Tables.Count > 0 && ds.Tables["Books"].Rows.Count > 0)
+                        {
+                            return JsonConvert.SerializeObject(ds.Tables["Books"]);
+                        }
+                        else
+                        {
+                            return JsonConvert.SerializeObject(new { message = "No records found" });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new { error = ex.Message });
+            }
+      }
+
+
+        [WebMethod]
+        public string GetBooksByTitle(string title)
+        {
+            try
+            {
+                //int catId = Convert.ToInt32(categoryId); // Convert string to int
+
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_SearchBooksByTitle", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Pass the category ID as a parameter
+                        cmd.Parameters.AddWithValue("@bookTitle", title);
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataSet ds = new DataSet();
+
+                        adapter.Fill(ds, "Books");
+
+                        if (ds.Tables.Count > 0 && ds.Tables["Books"].Rows.Count > 0)
+                        {
+                            return JsonConvert.SerializeObject(ds.Tables["Books"]);
+                        }
+                        else
+                        {
+                            return JsonConvert.SerializeObject(new { message = "No records found" });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new { error = ex.Message });
+            }
+        }
+
+        [WebMethod]
+        public string GetBooksByPriceRange(decimal upperPrice, decimal lowerPrice = 0)
+
+
+        {
+            try
+            {
+                //int catId = Convert.ToInt32(categoryId); // Convert string to int
+
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_GetBooksByPriceRange", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Pass the category ID as a parameter
+                        cmd.Parameters.AddWithValue("@lowerPrice", lowerPrice);
+                        cmd.Parameters.AddWithValue("@upperPrice", upperPrice);
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataSet ds = new DataSet();
+
+                        adapter.Fill(ds, "Books");
+
+                        if (ds.Tables.Count > 0 && ds.Tables["Books"].Rows.Count > 0)
+                        {
+                            return JsonConvert.SerializeObject(ds.Tables["Books"]);
+                        }
+                        else
+                        {
+                            return JsonConvert.SerializeObject(new { message = "No records found" });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return JsonConvert.SerializeObject(new { error = ex.Message });
+            }
+        }
+
+
+        [WebMethod]
+        public string GetTopRatedBooks()
+
+
+        {
+            try
+            {
+                //int catId = Convert.ToInt32(categoryId); // Convert string to int
+
+                using (SqlConnection conn = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_GetTopRatedBooks", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        //// Pass the category ID as a parameter
+                        //cmd.Parameters.AddWithValue("@lowerPrice", lowerPrice);
+                        //cmd.Parameters.AddWithValue("@lowerPrice", upperPrice);
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataSet ds = new DataSet();
+
+                        adapter.Fill(ds, "Books");
+
+                        if (ds.Tables.Count > 0 && ds.Tables["Books"].Rows.Count > 0)
+                        {
+                            return JsonConvert.SerializeObject(ds.Tables["Books"]);
+                        }
+                        else
+                        {
+                            return JsonConvert.SerializeObject(new { message = "No records found" });
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {

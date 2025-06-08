@@ -1,0 +1,7 @@
+C:\Users\prasu\source\repos\BookstoreSolution\BookStoreLibrary\bin\Debug\BookStoreLibrary.dll.config
+C:\Users\prasu\source\repos\BookstoreSolution\BookStoreLibrary\bin\Debug\BookStoreLibrary.dll
+C:\Users\prasu\source\repos\BookstoreSolution\BookStoreLibrary\bin\Debug\BookStoreLibrary.pdb
+C:\Users\prasu\source\repos\BookstoreSolution\BookStoreLibrary\obj\Debug\BookStoreLibrary.csproj.AssemblyReference.cache
+C:\Users\prasu\source\repos\BookstoreSolution\BookStoreLibrary\obj\Debug\BookStoreLibrary.csproj.CoreCompileInputs.cache
+C:\Users\prasu\source\repos\BookstoreSolution\BookStoreLibrary\obj\Debug\BookStoreLibrary.dll
+C:\Users\prasu\source\repos\BookstoreSolution\BookStoreLibrary\obj\Debug\BookStoreLibrary.pdb
