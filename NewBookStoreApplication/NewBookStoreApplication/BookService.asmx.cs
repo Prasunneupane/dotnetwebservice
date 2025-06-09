@@ -360,5 +360,46 @@ namespace NewBookStoreApplication
         }
 
 
+        [WebMethod]
+        public string InsertUpdateAuthor(
+                int AuthorId,
+                string firstName,
+                string lastName,
+                string biography,
+                DateTime? birthDate,
+                string country,
+                int createdBy = 1 // Default to 1 if not provided
+
+             )
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("sp_InsertUpdateAuthor", connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@AuthorId", AuthorId);
+                        cmd.Parameters.AddWithValue("@FirstName", firstName);
+                        cmd.Parameters.AddWithValue("@LastName",  lastName);
+                        cmd.Parameters.AddWithValue("@BirthDate", birthDate);
+                        cmd.Parameters.AddWithValue("@Country", country);
+                        cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
+
+
+                        object result = cmd.ExecuteScalar(); // returns BookId
+                        return $"✅ Book inserted successfully with ID: {result}";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return $"❌ Error inserting book: {ex.Message}";
+            }
+        }
+
+
     }
 }
