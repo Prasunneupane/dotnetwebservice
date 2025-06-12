@@ -130,7 +130,7 @@ namespace NewBookStoreApplication
              DateTime publishedDate,
              string category,
              string description,
-             int stockQuantity)
+             int stockQuantity )
         {
             try
             {
@@ -362,43 +362,47 @@ namespace NewBookStoreApplication
 
         [WebMethod]
         public string InsertUpdateAuthor(
-                int AuthorId,
+                int authorId,
                 string firstName,
                 string lastName,
                 string biography,
-                DateTime? birthDate,
+                DateTime birthDate,
                 string country,
-                int createdBy = 1 // Default to 1 if not provided
-
-             )
+                int createdBy 
+            )
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
-                    connection.Open();
+                    if (birthDate == null || birthDate == DateTime.MinValue)
+                    {
+                        return "❌ Invalid birth date. Please provide a valid date.";
+                    }
+
                     using (SqlCommand cmd = new SqlCommand("sp_InsertUpdateAuthor", connection))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.AddWithValue("@AuthorId", AuthorId);
+                        cmd.Parameters.AddWithValue("@AuthorId", authorId);
                         cmd.Parameters.AddWithValue("@FirstName", firstName);
-                        cmd.Parameters.AddWithValue("@LastName",  lastName);
+                        cmd.Parameters.AddWithValue("@LastName", lastName);
+                        cmd.Parameters.AddWithValue("@Biography", biography); // <-- Added this line
                         cmd.Parameters.AddWithValue("@BirthDate", birthDate);
                         cmd.Parameters.AddWithValue("@Country", country);
                         cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
 
-
-                        object result = cmd.ExecuteScalar(); // returns BookId
-                        return $"✅ Book inserted successfully with ID: {result}";
+                        object result = cmd.ExecuteScalar(); // returns AuthorId
+                        return $"✅ Author inserted/updated successfully with ID: {result}";
                     }
                 }
             }
             catch (Exception ex)
             {
-                return $"❌ Error inserting book: {ex.Message}";
+                return $"❌ Error inserting/updating author: {ex.Message}";
             }
         }
+
 
 
     }

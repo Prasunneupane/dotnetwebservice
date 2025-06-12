@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\prasu\\source\\repos\\dotnetwebservice\\NewBookStoreApplication\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{96A78F72-97AA-4996-81FD-E0CC45CE4DF2}|NewBookStoreApplication\\NewBookStoreApplication.csproj|c:\\users\\prasu\\source\\repos\\dotnetwebservice\\newbookstoreapplication\\newbookstoreapplication\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{96A78F72-97AA-4996-81FD-E0CC45CE4DF2}|NewBookStoreApplication\\NewBookStoreApplication.csproj|solutionrelative:newbookstoreapplication\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96A78F72-97AA-4996-81FD-E0CC45CE4DF2}|NewBookStoreApplication\\NewBookStoreApplication.csproj|c:\\users\\prasu\\source\\repos\\dotnetwebservice\\newbookstoreapplication\\newbookstoreapplication\\bookservice.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96A78F72-97AA-4996-81FD-E0CC45CE4DF2}|NewBookStoreApplication\\NewBookStoreApplication.csproj|solutionrelative:newbookstoreapplication\\bookservice.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96A78F72-97AA-4996-81FD-E0CC45CE4DF2}|NewBookStoreApplication\\NewBookStoreApplication.csproj|c:\\users\\prasu\\source\\repos\\dotnetwebservice\\newbookstoreapplication\\newbookstoreapplication\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{96A78F72-97AA-4996-81FD-E0CC45CE4DF2}|NewBookStoreApplication\\NewBookStoreApplication.csproj|solutionrelative:newbookstoreapplication\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\prasu\\source\\repos\\dotnetwebservice\\NewBookStoreApplication\\NewBookStoreApplication\\Web.config",
+              "RelativeDocumentMoniker": "NewBookStoreApplication\\Web.config",
+              "ToolTip": "C:\\Users\\prasu\\source\\repos\\dotnetwebservice\\NewBookStoreApplication\\NewBookStoreApplication\\Web.config",
+              "RelativeToolTip": "NewBookStoreApplication\\Web.config",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-06-12T17:18:42.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "packages.config",
+              "DocumentMoniker": "C:\\Users\\prasu\\source\\repos\\dotnetwebservice\\NewBookStoreApplication\\NewBookStoreApplication\\packages.config",
+              "RelativeDocumentMoniker": "NewBookStoreApplication\\packages.config",
+              "ToolTip": "C:\\Users\\prasu\\source\\repos\\dotnetwebservice\\NewBookStoreApplication\\NewBookStoreApplication\\packages.config",
+              "RelativeToolTip": "NewBookStoreApplication\\packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-06-12T16:51:35.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BookService.asmx.cs",
+              "DocumentMoniker": "C:\\Users\\prasu\\source\\repos\\dotnetwebservice\\NewBookStoreApplication\\NewBookStoreApplication\\BookService.asmx.cs",
+              "RelativeDocumentMoniker": "NewBookStoreApplication\\BookService.asmx.cs",
+              "ToolTip": "C:\\Users\\prasu\\source\\repos\\dotnetwebservice\\NewBookStoreApplication\\NewBookStoreApplication\\BookService.asmx.cs",
+              "RelativeToolTip": "NewBookStoreApplication\\BookService.asmx.cs",
+              "ViewState": "AgIAAGcBAAAAAAAAAAAswHgBAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T13:15:43.547Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
